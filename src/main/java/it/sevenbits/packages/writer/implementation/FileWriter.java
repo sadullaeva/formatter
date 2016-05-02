@@ -34,7 +34,7 @@ public class FileWriter implements IWriter {
      */
     public void writeToString(final String s) throws FileWriterException {
         try {
-            fileOutputStream.write(Integer.parseInt(s));
+            fileOutputStream.write(s.getBytes());
         } catch (IOException e) {
             throw new FileWriterException("Cannot write", e);
         }
