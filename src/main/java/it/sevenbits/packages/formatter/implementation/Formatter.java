@@ -6,7 +6,6 @@ import it.sevenbits.packages.reader.implementation.FileReaderException;
 import it.sevenbits.packages.writer.IWriter;
 import it.sevenbits.packages.writer.implementation.FileWriterException;
 
-import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -21,19 +20,16 @@ public class Formatter implements IFormatter {
      * Formatting Java code
      * @param reader input
      * @param writer output
+     * @param contract contract
      * @throws FormatterException custom exception
      */
-    public void formatter(final IReader reader, final IWriter writer) throws FormatterException {
-        Map<Character, String> contract = new HashMap<Character, String>();
-        contract.put('{', " {\n");
-        contract.put('}', "\n}");
-        contract.put(';', ";\n");
-
+    public void formatter(final IReader reader, final IWriter writer, final Map contract) throws FormatterException {
+        int countOfBrace = 0;
         try {
             while (reader.isNextCharacterExist()) {
                 char inputCharacter = reader.readCharacter();
                 if (contract.containsKey(inputCharacter)) {
-                    writer.writeToString(contract.get(inputCharacter));
+                    writer.writeToString((String) contract.get(inputCharacter));
                 } else {
                     writer.writeToString(String.valueOf(inputCharacter));
                 }
