@@ -40,15 +40,8 @@ public class FileWriter implements IWriter {
         }
     }
 
-    /**
-     * Close the stream
-     * @throws FileWriterException custom exception
-     */
-    public void closeStream() throws FileWriterException {
-        try {
-            fileOutputStream.close();
-        } catch (IOException e) {
-            throw new FileWriterException("Cannot close file", e);
-        }
+    @Override
+    public void close() throws IOException {
+        fileOutputStream.close();
     }
 }

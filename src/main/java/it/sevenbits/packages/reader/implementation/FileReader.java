@@ -64,4 +64,9 @@ public class FileReader implements IReader {
             throw new FileReaderException("Something went wrong", e);
         }
     }
+
+    @Override
+    public void close() throws IOException {
+        fileInputStream.close();
+    }
 }

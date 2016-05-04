@@ -27,8 +27,8 @@ public final class Bootstrap {
         IWriter writer = new FileWriter("src/main/resources/output.txt");
         IFormatter formatter = new Formatter();
         formatter.formatter(reader, writer);
-        writer.closeStream();
-        reader.closeStream();
+        writer.close();
+        reader.close();
     }
 
 }
