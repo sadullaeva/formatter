@@ -41,18 +41,6 @@ public class FileReader implements IReader {
     }
 
     /**
-     * Close the stream
-     * @throws FileReaderException custom exception
-     */
-    public void closeStream() throws FileReaderException {
-        try {
-            fileInputStream.close();
-        } catch (IOException e) {
-            throw new FileReaderException("Cannot close file", e);
-        }
-    }
-
-    /**
      * Check that the exists next character
      * @return true if next character exist
      * @throws FileReaderException custom exception
