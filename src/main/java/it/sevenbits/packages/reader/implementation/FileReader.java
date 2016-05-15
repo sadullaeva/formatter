@@ -17,39 +17,39 @@ public class FileReader implements IReader {
     /**
      * Constructor
      * @param fileName a file name
-     * @throws FileReaderException custom exception
+     * @throws ReaderException custom exception
      */
-    public FileReader(final String fileName) throws FileReaderException {
+    public FileReader(final String fileName) throws ReaderException {
         try {
             fileInputStream = new FileInputStream(fileName);
         } catch (FileNotFoundException e) {
-            throw new FileReaderException("File not found", e);
+            throw new ReaderException("File not found", e);
         }
     }
 
     /**
      * Read a file character by character
      * @return one character
-     * @throws FileReaderException custom exception
+     * @throws ReaderException custom exception
      */
-    public char readCharacter() throws FileReaderException {
+    public char readCharacter() throws ReaderException {
         try {
             return (char) fileInputStream.read();
         } catch (IOException e) {
-            throw new FileReaderException("Cannot read file", e);
+            throw new ReaderException("Cannot read file", e);
         }
     }
 
     /**
      * Check that the exists next character
      * @return true if next character exist
-     * @throws FileReaderException custom exception
+     * @throws ReaderException custom exception
      */
-    public boolean isNextCharacterExist() throws FileReaderException {
+    public boolean isNextCharacterExist() throws ReaderException {
         try {
             return fileInputStream.available() != 0;
         } catch (IOException e) {
-            throw new FileReaderException("Something went wrong", e);
+            throw new ReaderException("Something went wrong", e);
         }
     }
 

@@ -5,7 +5,7 @@ import it.sevenbits.packages.formatter.implementation.Formatter;
 import it.sevenbits.packages.formatter.implementation.FormatterException;
 import it.sevenbits.packages.reader.IReader;
 import it.sevenbits.packages.reader.implementation.FileReader;
-import it.sevenbits.packages.reader.implementation.FileReaderException;
+import it.sevenbits.packages.reader.implementation.ReaderException;
 import it.sevenbits.packages.writer.IWriter;
 import it.sevenbits.packages.writer.implementation.FileWriter;
 import it.sevenbits.packages.writer.implementation.FileWriterException;
@@ -36,11 +36,12 @@ public final class Bootstrap {
         contract.put('}', "\n}");
         contract.put(';', ";\n    ");
 
+
         try (IReader reader = new FileReader("src/main/resources/input.txt");
-                IWriter writer = new FileWriter("src/main/resources/output.txt")) {
+             IWriter writer = new FileWriter("src/main/resources/output.txt")) {
             IFormatter formatter = new Formatter();
             formatter.formatter(reader, writer, contract);
-        } catch (IOException | FileWriterException | FileReaderException | FormatterException e) {
+        } catch (IOException | FileWriterException | ReaderException | FormatterException e) {
             throw new BootstrapException(e);
         }
     }

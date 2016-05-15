@@ -2,7 +2,7 @@ package it.sevenbits.packages.formatter.implementation;
 
 import it.sevenbits.packages.formatter.IFormatter;
 import it.sevenbits.packages.reader.IReader;
-import it.sevenbits.packages.reader.implementation.FileReaderException;
+import it.sevenbits.packages.reader.implementation.ReaderException;
 import it.sevenbits.packages.writer.IWriter;
 import it.sevenbits.packages.writer.implementation.FileWriterException;
 
@@ -34,7 +34,7 @@ public class Formatter implements IFormatter {
                     writer.writeToString(String.valueOf(inputCharacter));
                 }
             }
-        } catch (FileReaderException e) {
+        } catch (ReaderException e) {
             throw new FormatterException("Something went wrong", e);
         } catch (FileWriterException e) {
             throw new FormatterException("Something went wrong", e);

@@ -1,6 +1,6 @@
 package it.sevenbits.packages.reader;
 
-import it.sevenbits.packages.reader.implementation.FileReaderException;
+import it.sevenbits.packages.reader.implementation.ReaderException;
 
 import java.io.Closeable;
 
@@ -12,15 +12,15 @@ public interface IReader extends Closeable {
     /**
      * Method read
      * @return one character
-     * @throws FileReaderException custom exception
+     * @throws ReaderException custom exception
      */
-    char readCharacter() throws FileReaderException;
+    char readCharacter() throws ReaderException;
 
     /**
      * Check that the exists next character
      * @return true if next character exist
-     * @throws FileReaderException custom exception
+     * @throws ReaderException custom exception
      */
-    boolean isNextCharacterExist() throws FileReaderException;
+    boolean isNextCharacterExist() throws ReaderException;
 
 }

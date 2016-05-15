@@ -2,7 +2,7 @@ package it.sevenbits.packages.writer;
 
 import it.sevenbits.packages.reader.IReader;
 import it.sevenbits.packages.reader.implementation.FileReader;
-import it.sevenbits.packages.reader.implementation.FileReaderException;
+import it.sevenbits.packages.reader.implementation.ReaderException;
 import it.sevenbits.packages.writer.implementation.FileWriter;
 import it.sevenbits.packages.writer.implementation.FileWriterException;
 import org.junit.Before;
@@ -23,11 +23,6 @@ public class FileWriterTest {
 
     }
 
-//    @Test(expected = FileWriterException.class)
-//    public void testFileWriterIfFileNotFound() throws FileWriterException {
-//         IWriter writer = new FileWriter("src/main/resources/test/thisFileDoesNotExist.txt");
-//     }
-
     @Test(expected = FileWriterException.class)
     public void testFileWriterIfFileCanNotBeWrite() throws FileWriterException, IOException {
         try(IWriter writer = new FileWriter("src/main/resources/test/thisFileCannotBeWrite.txt")) {
@@ -36,7 +31,7 @@ public class FileWriterTest {
     }
 
     @Test
-    public void testWriteToString() throws FileWriterException, IOException, FileReaderException {
+    public void testWriteToString() throws FileWriterException, IOException, ReaderException {
         try (IWriter writer = new FileWriter("src/main/resources/test/testWriteToString.txt")) {
             writer.writeToString("lalala");
         }

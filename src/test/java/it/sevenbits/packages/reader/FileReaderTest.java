@@ -1,7 +1,7 @@
 package it.sevenbits.packages.reader;
 
 import it.sevenbits.packages.reader.implementation.FileReader;
-import it.sevenbits.packages.reader.implementation.FileReaderException;
+import it.sevenbits.packages.reader.implementation.ReaderException;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -20,13 +20,13 @@ public class FileReaderTest {
 
     }
 
-    @Test(expected = FileReaderException.class)
-    public void testFileReaderIfFileNotFound() throws FileReaderException {
+    @Test(expected = ReaderException.class)
+    public void testFileReaderIfFileNotFound() throws ReaderException {
         IReader reader = new FileReader("thisFileDoesNotExist.txt");
     }
 
     @Test
-    public void testReadCharacter() throws FileReaderException, IOException {
+    public void testReadCharacter() throws ReaderException, IOException {
         try (IReader reader = new FileReader("src/main/resources/input.txt")) {
             assertEquals('c', reader.readCharacter());
             if (reader.isNextCharacterExist()) {
